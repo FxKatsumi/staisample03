@@ -79,23 +79,30 @@ def appmain(title, note, ApiFunc, threshold):
         # 映像表示
         with streaming_placeholder.container():
             # WEBカメラ
+            # webrtc_ctx = webrtc_streamer(
+            #     key="object-detection",
+            #     mode=WebRtcMode.SENDRECV,
+            #     rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+            #     video_frame_callback=callback,
+            #     media_stream_constraints={"video": True, "audio": False},
+            #     async_processing=True,
+            #     translations={
+            #         "start": "開始",
+            #         "stop": "停止",
+            #         "select_device": "カメラ切替",
+            #         "media_api_not_available": "Media APIが利用できない環境です",
+            #         "device_ask_permission": "メディアデバイスへのアクセスを許可してください",
+            #         "device_not_available": "メディアデバイスを利用できません",
+            #         "device_access_denied": "メディアデバイスへのアクセスが拒否されました",
+            #     },
+            # )
             webrtc_ctx = webrtc_streamer(
-                key="object-detection",
-                mode=WebRtcMode.SENDRECV,
-                rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+                key="example",
                 video_frame_callback=callback,
-                media_stream_constraints={"video": True, "audio": False},
-                async_processing=True,
-                translations={
-                    "start": "開始",
-                    "stop": "停止",
-                    "select_device": "カメラ切替",
-                    "media_api_not_available": "Media APIが利用できない環境です",
-                    "device_ask_permission": "メディアデバイスへのアクセスを許可してください",
-                    "device_not_available": "メディアデバイスを利用できません",
-                    "device_access_denied": "メディアデバイスへのアクセスが拒否されました",
-                },
-            )
+                rtc_configuration={  # この設定を足す
+                    "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+                }
+            )            
 
         if webrtc_ctx.state.playing: # 映像配信中？
             panels = labels_placeholder
