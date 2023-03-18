@@ -24,22 +24,22 @@ def callback(frame):
                 # 画像形式変換
                 img = frame.to_ndarray(format="bgr24")
 
-                # 画像API処理
-                df, stat = VisionAPIFunc(img, probability_threshold)
+                # # 画像API処理
+                # df, stat = VisionAPIFunc(img, probability_threshold)
 
-                # 結果描画
-                for index, row in df.iterrows():
-                    # 枠描画
-                    cv2.rectangle(img, (int(row[colX_start]),int(row[colY_start])), (int(row[colX_end]),int(row[colY_end])), frame_color, 1)
-                    # ラベル表示
-                    cv2.putText(img,
-                                text=row[colName] + ': ' + str(row[colProbability]),
-                                org=(int(row[colX_start])+5,int(row[colY_start])),
-                                fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                                fontScale=1.0,
-                                color=frame_color,
-                                thickness=2,
-                                lineType=cv2.LINE_4)
+                # # 結果描画
+                # for index, row in df.iterrows():
+                #     # 枠描画
+                #     cv2.rectangle(img, (int(row[colX_start]),int(row[colY_start])), (int(row[colX_end]),int(row[colY_end])), frame_color, 1)
+                #     # ラベル表示
+                #     cv2.putText(img,
+                #                 text=row[colName] + ': ' + str(row[colProbability]),
+                #                 org=(int(row[colX_start])+5,int(row[colY_start])),
+                #                 fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #                 fontScale=1.0,
+                #                 color=frame_color,
+                #                 thickness=2,
+                #                 lineType=cv2.LINE_4)
 
             except:
                 raise
@@ -50,7 +50,7 @@ def callback(frame):
     except Exception as e:
         stat = "エラー：" + str(e)
 
-    result_queue.put(stat) # メッセージ
+    # result_queue.put(stat) # メッセージ
 
     return av.VideoFrame.from_ndarray(img, format="bgr24")
 
