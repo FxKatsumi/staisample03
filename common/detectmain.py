@@ -104,18 +104,18 @@ def appmain(title, note, ApiFunc, threshold):
                 }
             )            
 
-        if webrtc_ctx.state.playing: # 映像配信中？
-            panels = labels_placeholder
+        # if webrtc_ctx.state.playing: # 映像配信中？
+        #     panels = labels_placeholder
 
-            while webrtc_ctx.state.playing: # 配信中
-                try:
-                    # キューの取得
-                    ret = result_queue.get(timeout=queueTimeOutSec) # メッセージ
-                except queue.Empty:
-                    ret = ""
+        #     while webrtc_ctx.state.playing: # 配信中
+        #         try:
+        #             # キューの取得
+        #             ret = result_queue.get(timeout=queueTimeOutSec) # メッセージ
+        #         except queue.Empty:
+        #             ret = ""
 
-                if ret != "": # メッセージあり？
-                    panels.error(ret) # エラー表示
+        #         if ret != "": # メッセージあり？
+        #             panels.error(ret) # エラー表示
 
     except Exception as e:
         st.error("エラー：" + str(e)) # エラー表示
