@@ -16,4 +16,4 @@ probability_threshold = 0.7
 # プログラム開始
 if __name__ == "__main__":
     # メイン処理
-    appmain("Microsoft", "フォレックス ロゴマークのみを学習したモデル(80)", VisionAPI, probability_threshold)
+    appmain("Microsoft", "フォレックス ロゴマークのみを学習したモデル", VisionAPI, probability_threshold)
