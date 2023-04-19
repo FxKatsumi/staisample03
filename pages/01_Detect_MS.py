@@ -11,7 +11,7 @@ from common.azure import VisionAPI
 
 # 精度しきい値
 # probability_threshold = 0.92
-probability_threshold = 0.8
+probability_threshold = 0.7
 
 # プログラム開始
 if __name__ == "__main__":
